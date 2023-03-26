@@ -3,6 +3,7 @@ import { forwardRef } from "preact/compat";
 
 type Props = JSX.IntrinsicElements["span"] & {
   tone?:
+    | "primary"
     | "default"
     | "default-inverse"
     | "subdued"

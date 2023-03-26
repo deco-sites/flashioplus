@@ -49,7 +49,7 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
   } = image;
 
   return (
-    <div class="relative h-[600px] min-w-[100vw] overflow-y-hidden">
+    <div class="relative h-[415px] min-w-[100vw] overflow-y-hidden">
       <a href={action?.href ?? "#"} aria-label={action?.label}>
         <Picture class="w-full" preload={lcp}>
           <Source
@@ -57,14 +57,14 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
             fetchPriority={lcp ? "high" : "auto"}
             src={mobile}
             width={360}
-            height={600}
+            height={415}
           />
           <Source
             media="(min-width: 768px)"
             fetchPriority={lcp ? "high" : "auto"}
             src={desktop}
             width={1440}
-            height={600}
+            height={415}
           />
           <img
             class="object-cover w-full sm:h-full"
@@ -75,7 +75,7 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
         </Picture>
         {action && (
           <div
-            class="absolute top-0 bottom-0 m-auto left-0 right-0 sm:right-auto sm:left-[12%] max-h-min max-w-[235px] flex flex-col gap-4 bg-hover-inverse p-4 rounded"
+            class="hidden absolute top-0 bottom-0 m-auto left-0 right-0 sm:right-auto sm:left-[12%] max-h-min max-w-[235px] flex flex-col gap-4 bg-hover-inverse p-4 rounded"
             style={{ backdropFilter: "blur(8px)" }}
           >
             <Text variant="heading-1" tone="default-inverse">
@@ -130,7 +130,7 @@ function Dots({ images, interval = 0 }: Props) {
                 } w-16 sm:w-20 h-0.5`}
                 style={{
                   background:
-                    "linear-gradient(to right, #FFFFFF var(--dot-progress), rgba(255, 255, 255, 0.4) var(--dot-progress))",
+                    "linear-gradient(to right, #ff5a11 var(--dot-progress), rgba(255, 255, 255, 0.4) var(--dot-progress))",
                 }}
               />
             </button>

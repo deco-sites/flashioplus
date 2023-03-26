@@ -36,9 +36,10 @@ const options: Omit<Options, "selfURL"> = {
       colors: {
         "default": "#FFFFFF",
         "header": "#FFFFFF",
+        "alert": "#dcdcdc",
         "badge": "#8C3D3D", // shopping cart tem isso tambem
         "footer": "#003232",
-        "interactive": "#161616",
+        "interactive": "#ff5a11",
         "interactive-inverse": "#FFFFFF",
         "hover": "rgba(0, 0, 0, 0.04)",
         "hover-inverse": "rgba(255, 255, 255, 0.4)",
@@ -52,6 +53,7 @@ const options: Omit<Options, "selfURL"> = {
         "section-title": "#161616",
         "positive": "#1A7346",
         "critical": "#B44125",
+        "primary": "#ff5a11",
       },
       borderColor: {
         "default": "#D4DBD7",
@@ -68,7 +70,7 @@ const options: Omit<Options, "selfURL"> = {
         "heading-1": ["56px", "67.2px"],
         "heading-2": ["24px", "28.8px"],
         "heading-3": ["20px", "24px"],
-        "menu": ["16px", "20px"],
+        "menu": ["13px", "20px"],
         "button": ["14px", "18px"],
         "body": ["16px", "20px"],
         "caption": ["13px", "16px"],
@@ -78,7 +80,7 @@ const options: Omit<Options, "selfURL"> = {
         "heading-1": "500",
         "heading-2": "500",
         "heading-3": "500",
-        "menu": "400",
+        "menu": "300",
         "button": "700",
         "body": "400",
         "caption": "400",
