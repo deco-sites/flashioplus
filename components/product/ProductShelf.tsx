@@ -39,7 +39,7 @@ function ProductShelf({
         snap="snap-center sm:snap-start block first:ml-6 sm:first:ml-0 last:mr-6 sm:last:mr-0"
       >
         {products?.map((product) => (
-          <div class="min-w-[270px] max-w-[270px] sm:min-w-[292px] sm:max-w-[292px]">
+          <div class="min-w-[270px] max-w-[270px] sm:min-w-[272px] sm:max-w-[272px]">
             <ProductCard product={product} />
           </div>
         ))}

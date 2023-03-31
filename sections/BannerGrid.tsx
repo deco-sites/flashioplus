@@ -42,7 +42,7 @@ export default function BannnerGrid({
 }: Props) {
   return (
     <Container>
-      <section class="w-full px-4 md:px-0 mx-auto">
+      <section class="w-full px-5 md:px-0 mx-auto py-10">
         {title &&
           (
             <div class="py-6 md:py-0 md:pb-[40px] flex items-center mt-6">
@@ -57,15 +57,19 @@ export default function BannnerGrid({
           class={`grid gap-4 md:gap-6 grid-cols-${
             itemsPerLine && itemsPerLine.mobile ? itemsPerLine.mobile : "2"
           } md:grid-cols-${
-            itemsPerLine && itemsPerLine.desktop
+            itemsPerLine && itemsPerLine.desktop !== 2
               ? itemsPerLine.desktop
-              : banners.length
+              : 3
           }`}
         >
-          {banners.map(({ href, srcMobile, srcDesktop, alt }) => (
+          {banners.map(({ href, srcMobile, srcDesktop, alt }, index) => (
             <a
               href={href}
-              class={`overflow-hidden ${
+              class={`overflow-hidden h-[360px] ${
+                itemsPerLine && (itemsPerLine.desktop === 2 && index === 1)
+                  ? "col-span-2"
+                  : "col-span-1"
+              } ${
                 borderRadius?.mobile && `rounded-[${borderRadius.mobile}px]`
               } ${
                 borderRadius?.desktop
@@ -83,11 +87,17 @@ export default function BannnerGrid({
                 <Source
                   media="(min-width: 768px)"
                   src={srcDesktop ? srcDesktop : srcMobile}
-                  width={250}
-                  height={250}
+                  width={(itemsPerLine.desktop === 1 ||
+                      itemsPerLine.desktop === 2 && index === 1)
+                    ? 1200
+                    : 400}
+                  height={(itemsPerLine.desktop === 1 ||
+                      itemsPerLine.desktop === 2 && index === 1)
+                    ? 400
+                    : 400}
                 />
                 <img
-                  class="w-full"
+                  class="w-full h-[335px]"
                   sizes="(max-width: 640px) 100vw, 30vw"
                   src={srcMobile}
                   alt={alt}
