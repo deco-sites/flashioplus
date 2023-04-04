@@ -106,7 +106,7 @@ function Dots({ images, interval = 0 }: Props) {
         }}
       >
       </style>
-      <ol class="flex items-center justify-center col-span-full gap-4 z-10 row-start-4">
+      <ol class="flex items-center justify-center col-span-full gap-2 z-10 row-start-4">
         {images?.map((_, index) => (
           <li class="h-full">
             <button
@@ -115,23 +115,7 @@ function Dots({ images, interval = 0 }: Props) {
               class="h-full rounded focus:outline-none group"
             >
               <div
-                class={tw`group-disabled:${
-                  animation(
-                    `${interval}s ease-out 1 forwards`,
-                    keyframes`
-                      from: {
-                        --dot-progress: 0%;
-                      }
-                      to {
-                        --dot-progress: 100%;
-                      }
-                    `,
-                  )
-                } w-16 sm:w-20 h-0.5`}
-                style={{
-                  background:
-                    "linear-gradient(to right, #ff5a11 var(--dot-progress), rgba(255, 255, 255, 0.4) var(--dot-progress))",
-                }}
+                class={tw`group-disabled:(bg-[#ff5a11])  bg-[#CACBCC] w-3 h-3 rounded-full`}
               />
             </button>
           </li>
@@ -146,16 +130,16 @@ function Controls() {
     <>
       <div class="flex items-center justify-center z-10 col-start-1 row-start-2">
         <Button
-          class="h-12 w-12"
+          class="h-12 w-12 "
           variant="icon"
           data-slide="prev"
           aria-label="Previous item"
         >
           <Icon
-            class="text-default-inverse"
-            size={20}
+            class="text-black"
+            size={30}
             id="ChevronLeft"
-            strokeWidth={3}
+            strokeWidth={2}
           />
         </Button>
       </div>
@@ -167,10 +151,10 @@ function Controls() {
           aria-label="Next item"
         >
           <Icon
-            class="text-default-inverse"
-            size={20}
+            class="text-black"
+            size={30}
             id="ChevronRight"
-            strokeWidth={3}
+            strokeWidth={2}
           />
         </Button>
       </div>
@@ -182,22 +166,25 @@ function BannerCarousel({ images, preload, interval }: Props) {
   const id = useId();
 
   return (
-    <div
-      id={id}
-      class="grid grid-cols-[48px_1fr_48px] sm:grid-cols-[120px_1fr_120px] grid-rows-[1fr_48px_1fr_48px]"
-    >
-      <Slider class="col-span-full row-span-full scrollbar-none gap-6">
-        {images?.map((image, index) => (
-          <BannerItem image={image} lcp={index === 0 && preload} />
-        ))}
-      </Slider>
+    <>
+      <div
+        id={id}
+        class="grid grid-cols-[48px_1fr_48px] sm:grid-cols-[120px_1fr_120px] grid-rows-[1fr_48px_1fr_48px]"
+      >
+        <Slider class="col-span-full row-span-full scrollbar-none gap-6">
+          {images?.map((image, index) => (
+            <BannerItem image={image} lcp={index === 0 && preload} />
+          ))}
+        </Slider>
 
-      <Controls />
+        <Controls />
+        <div class="w-full flex justify-center col-span-full bg-light-gray py-2">
+          <Dots images={images} interval={interval} />
+        </div>
 
-      <Dots images={images} interval={interval} />
-
-      <SliderControllerJS rootId={id} interval={interval && interval * 1e3} />
-    </div>
+        <SliderControllerJS rootId={id} interval={interval && interval * 1e3} />
+      </div>
+    </>
   );
 }
 
