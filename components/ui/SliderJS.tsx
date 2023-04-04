@@ -174,7 +174,11 @@ function Slider({ rootId, behavior = "smooth", interval }: Props) {
     interval,
   ]);
 
-  return <div data-slider-controller-js />;
+  return (
+    <>
+      <div data-slider-controller-js />
+    </>
+  );
 }
 
 export default Slider;
