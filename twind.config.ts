@@ -43,6 +43,7 @@ const options: Omit<Options, "selfURL"> = {
         "interactive-inverse": "#FFFFFF",
         "hover": "rgba(0, 0, 0, 0.04)",
         "hover-inverse": "rgba(255, 255, 255, 0.4)",
+        "orange": "#FF5A11",
       },
       textColor: {
         "default": "#161616",
@@ -55,6 +56,7 @@ const options: Omit<Options, "selfURL"> = {
         "critical": "#B44125",
         "primary": "#ff5a11",
         "footer": "#999999",
+        "card-title": "#B9B9B9",
       },
       borderColor: {
         "default": "#D4DBD7",
