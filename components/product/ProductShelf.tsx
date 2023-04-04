@@ -35,11 +35,11 @@ function ProductShelf({
       </h2>
 
       <Slider
-        class="gap-6 col-span-full row-start-2 row-end-5"
+        class="gap-6 col-span-full row-start-2 row-end-5 items-start"
         snap="snap-center sm:snap-start block first:ml-6 sm:first:ml-0 last:mr-6 sm:last:mr-0"
       >
         {products?.map((product) => (
-          <div class="min-w-[270px] max-w-[270px] sm:min-w-[272px] sm:max-w-[272px]">
+          <div class="min-w-[270px] max-w-[270px] sm:min-w-[272px] sm:max-w-[272px] flex justify-center">
             <ProductCard product={product} />
           </div>
         ))}
