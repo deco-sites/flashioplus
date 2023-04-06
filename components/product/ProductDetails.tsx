@@ -15,6 +15,7 @@ import { useUI } from "../../sdk/useUI.ts";
 import Input from "../ui/Input.tsx";
 import { useSignal } from "@preact/signals";
 import Icon from "$store/components/ui/Icon.tsx";
+import DetailCarousel from "../ui/DetailCarousel.tsx";
 
 export interface Props {
   page: LoaderReturnType<ProductDetailsPage | null>;
@@ -62,28 +63,7 @@ function Details({ page }: { page: ProductDetailsPage }) {
         <div class="flex flex-col overflow-auto snap-x snap-mandatory p-8 scroll-smooth sm:gap-8">
           <div class="flex flex-col items-center lg:flex-row lg:gap-2 lg:items-start">
             <div class="flex gap-2 max-w-full lg:max-w-[450px] flex-col lg:flex-row justify-center items-center">
-              <Image
-                style={{ aspectRatio: "360 / 500" }}
-                class=" sm:min-w-0 max-w-[450px] sm:w-auto sm:h-[600px]"
-                sizes="(max-width: 540px) 100vw, 30vw"
-                alt={[front, back][currentImage.value].alternateName}
-                src={[front, back][currentImage.value].url!}
-                width={360}
-                height={500}
-              />
-              <div class="flex self-start gap-4 lg:flex-col">
-                {[front, back ?? front].map((image) => (
-                  <button
-                    class="border  rounded-xl p-2"
-                    onClick={() =>
-                      currentImage.value == 0
-                        ? currentImage.value = 1
-                        : currentImage.value = 0}
-                  >
-                    <Image src={image.url!} width={50} height={60} />
-                  </button>
-                ))}
-              </div>
+              <DetailCarousel images={[front.url!, back.url!]} />
             </div>
             {/* Product Info */}
             <div class=" flex flex-col gap-4 h-full px-4 sm:px-0">
