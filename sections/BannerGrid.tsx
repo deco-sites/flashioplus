@@ -1,6 +1,7 @@
 import Container from "$store/components/ui/Container.tsx";
 import { Picture, Source } from "deco-sites/std/components/Picture.tsx";
 import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
+import Carousel from "./Carousel.tsx";
 
 export interface Banner {
   srcMobile: LiveImage;
@@ -108,6 +109,9 @@ export default function BannnerGrid({
             </a>
           ))}
         </div>
+      </section>
+      <section>
+        <Carousel />
       </section>
     </Container>
   );
