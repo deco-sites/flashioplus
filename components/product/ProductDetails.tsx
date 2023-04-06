@@ -14,6 +14,7 @@ import Toggle from "../ui/Toggle.tsx";
 import { useUI } from "../../sdk/useUI.ts";
 import Input from "../ui/Input.tsx";
 import { useSignal } from "@preact/signals";
+import Icon from "$store/components/ui/Icon.tsx";
 
 export interface Props {
   page: LoaderReturnType<ProductDetailsPage | null>;
@@ -85,63 +86,73 @@ function Details({ page }: { page: ProductDetailsPage }) {
               </div>
             </div>
             {/* Product Info */}
-            <div class=" flex flex-col px-4 sm:px-0">
+            <div class=" flex flex-col gap-4 h-full px-4 sm:px-0">
               {/* Code and name */}
               <div class="mt-4 flex  flex-col sm:mt-0">
-                <h1 class="text-center ">
-                  <Text class="text-center text-2xl !font-bold">
-                    {isVariantOf?.name}
-                  </Text>
-                </h1>
-                <div>
-                  <Text class="uppercase text-[14px]  font-light">
-                    Cod. {gtin}
-                  </Text>
-                </div>
-              </div>
-              {/* Prices */}
-              <div class="mt-4">
-                <div class="flex flex-row gap-2 items-center">
-                  <Text
-                    class="line-through"
-                    tone="subdued"
-                    variant="list-price"
-                  >
-                    {formatPrice(listPrice, offers!.priceCurrency!)}
-                  </Text>
-                  <Text
-                    tone="price"
-                    variant="heading-3"
-                    class="!font-semibold !text-[30px]"
-                  >
-                    {formatPrice(price, offers!.priceCurrency!)}
-                  </Text>
-                </div>
-                <Text tone="subdued" variant="caption" class="!font-italic">
-                  {installments}
+                <Text variant="heading-1" class="text-4xl !font-normal mb-2">
+                  {isVariantOf?.name}
                 </Text>
+                <div class="w-[30px] h-[3px] bg-gray-200" />
               </div>
               {/* Sku Selector */}
-              <div class="mt-4 w-full sm:mt-6">
+              <div class="w-full">
                 <ProductSelector product={product} />
               </div>
-              <div class="flex flex-col gap-4 lg:flex-row">
-                <Button class="bg-transparent border text-black rounded-none !font-light text-[14px]">
-                  Descubre seu Tamanho
-                </Button>
-                <Button class="bg-transparent border text-black rounded-none !font-light text-[14px]">
-                  Tabela de medidas
-                </Button>
+              <div class="flex w-full justify-between gap-5">
+                {/* Prices */}
+                <div class="mt-4">
+                  <div class="flex flex-row gap-2 items-end mb-4">
+                    <Text
+                      variant="heading-3"
+                      class="!text-[30px] text-orange"
+                    >
+                      {formatPrice(price, offers!.priceCurrency!)}
+                    </Text>
+                    <Text
+                      class="line-through !text-sm"
+                      tone="subdued"
+                      variant="list-price"
+                    >
+                      {formatPrice(listPrice, offers!.priceCurrency!)}
+                    </Text>
+                  </div>
+                  <div class="flex flex-col">
+                    <Text tone="subdued" variant="caption" class="!font-italic">
+                      ou {installments}
+                    </Text>
+                    <Text tone="subdued" class="!text-sm flex">
+                      Economize:{" "}
+                      <p class="text-orange font-semibold">
+                        {formatPrice(
+                          listPrice !== undefined && price !== undefined
+                            ? listPrice - price
+                            : 0,
+                          offers!.priceCurrency!,
+                        )}
+                      </p>
+                    </Text>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  {seller && (
+                    <AddToCartButton
+                      skuId={productID}
+                      sellerId={seller}
+                    />
+                  )}
+                  <Button
+                    variant="icon"
+                    aria-label="Favorite"
+                    class="text-white !bg-orange w-[50px] h-[50px]"
+                  >
+                    <Icon id="Heart" width={30} height={30} strokeWidth={0.2} />
+                  </Button>
+                </div>
               </div>
-              {seller && (
-                <AddToCartButton
-                  skuId={productID}
-                  sellerId={seller}
-                />
-              )}
+              <div class="w-[30px] h-[2px] bg-gray-200" />
               <Input
-                buttonText="OK"
-                label="Calcule o frete e prazo de entrega"
+                buttonText="Calcular"
+                label="Calcule o frete:"
                 link={{ href: "#", text: "Não sei meu CEP" }}
               />
             </div>
@@ -153,7 +164,11 @@ function Details({ page }: { page: ProductDetailsPage }) {
               (
                 <div class="mt-4 sm:mt-6">
                   <Text variant="caption">
-                    {description && <div class="ml-2 mt-2">{description}</div>}
+                    {description && (
+                      <div class="ml-2 mt-2 text-gray-400 leading-5">
+                        {description}
+                      </div>
+                    )}
                   </Text>
                 </div>
               )}

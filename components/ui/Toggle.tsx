@@ -13,11 +13,13 @@ function Toggle() {
           detailsToggle.value = "Descrição";
         }}
         class={`${
-          detailsToggle.value === "Descrição" ? "text-black" : "!text-gray-400"
-        }`}
+          detailsToggle.value === "Descrição"
+            ? "text-black"
+            : "!text-gray-400 font-normal"
+        } sm:text-[20px]`}
       >
         Descrição
-        <div class="block h-1 w-[30px] group-hover:bg-[#ff5a11]" />
+        <div class="block h-[2px] w-[30px] group-hover:bg-[#ff5a11]" />
       </Button>
       <Button
         variant="toggle"
@@ -27,11 +29,11 @@ function Toggle() {
         class={`${
           detailsToggle.value === "Especificações"
             ? "text-black"
-            : "!text-gray-400 "
-        } focus:outline-none`}
+            : "!text-gray-400 font-normal "
+        } sm:text-[20px]`}
       >
         Especificações
-        <div class="block h-1 w-[30px] group-hover:bg-[#ff5a11]" />
+        <div class="block h-[2px] w-[30px] group-hover:bg-[#ff5a11]" />
       </Button>
     </div>
   );

@@ -1,6 +1,7 @@
+import Icon from "$store/components/ui/Icon.tsx";
+
 interface Input {
   label: string;
-  placeholder?: string;
   buttonText: string;
   link?: {
     href: string;
@@ -9,17 +10,24 @@ interface Input {
 }
 
 function Input(
-  { label, placeholder, buttonText, link }: Input,
+  { label, buttonText, link }: Input,
 ) {
   return (
-    <form class="flex flex-col items-center gap-[4px]">
-      <label class="text-[12px] font-medium items-center  ">
+    <form class="flex flex-col items-start gap-[4px]">
+      <label class="text-[12px] flex gap-1.5 font-normal items-end">
+        <Icon
+          id={"Truck"}
+          width={25}
+          height={20}
+          strokeWidth={1}
+          class="text-black"
+        />
         {label}
       </label>
-      <div class="flex">
+      <div class="flex gap-4">
         <input class="p-2 border border-black"></input>
         <button
-          class=" uppercase font-bold text-white p-2"
+          class=" uppercase font-bold text-white bg-[#979899] rounded-[25px] py-[5px] px-[25px]"
           onClick={(e) => e.preventDefault()}
         >
           {buttonText}
@@ -27,7 +35,10 @@ function Input(
       </div>
       {link
         ? (
-          <a class="text-[12px] self-start font-medium" href={link.href}>
+          <a
+            class="text-[12px] text-orange self-start font-medium"
+            href={link.href}
+          >
             {link.text}
           </a>
         )

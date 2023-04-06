@@ -14,7 +14,7 @@ function AddToCartButton({ skuId, sellerId }: Props) {
   });
 
   return (
-    <div class="relative w-min px-[25px] py-[5px] justify-center rounded-[25px]  flex items-center bg-interactive">
+    <div class="relative w-min h-[50px] px-[25px] py-[5px] justify-center rounded-[25px]  flex items-center bg-interactive">
       <Counter />
       <Button
         data-deco="add-to-cart"
