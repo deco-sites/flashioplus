@@ -14,16 +14,18 @@ const Counter = () => {
   return (
     <div class="flex font-semibold items-center border-2 border-gray-200 rounded-[4px] overflow-hidden">
       <button
-        class="disabled:(bg-gray-100 text-gray-400) px-0.5 font-semibold text-sm text-orange"
+        class="disabled:(bg-gray-100 text-gray-400) bg-white px-0.5 font-semibold text-sm text-orange"
         disabled={quantity.value === 0}
         onClick={decreaseQuantity}
       >
         －
       </button>
-      <p class="px-2 border-x-2 h-full text-sm border-gray-200 leading-5">
+      <p class="px-2 bg-white border-x-2 h-full text-sm border-gray-200 leading-5">
         {quantity}
       </p>
-      <button class="text-sm px-0.5" onClick={increaseQuantity}>＋</button>
+      <button class="text-sm bg-white px-0.5" onClick={increaseQuantity}>
+        ＋
+      </button>
     </div>
   );
 };

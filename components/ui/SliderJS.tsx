@@ -12,6 +12,7 @@ const ATTRIBUTES = {
   'data-slide="prev"': 'data-slide="prev"',
   'data-slide="next"': 'data-slide="next"',
   "data-dot": "data-dot",
+  "data-image": "data-image",
 };
 
 // Percentage of the item that has to be inside the container
@@ -52,6 +53,7 @@ const setup = ({ rootId, behavior, interval }: Props) => {
   const prev = root?.querySelector(`[${ATTRIBUTES['data-slide="prev"']}]`);
   const next = root?.querySelector(`[${ATTRIBUTES['data-slide="next"']}]`);
   const dots = root?.querySelectorAll(`[${ATTRIBUTES["data-dot"]}]`);
+  const images = root?.querySelectorAll(`[${ATTRIBUTES["data-image"]}]`);
 
   if (!root || !slider || !items || items.length === 0) {
     console.warn(
@@ -137,6 +139,14 @@ const setup = ({ rootId, behavior, interval }: Props) => {
         } else {
           dot?.removeAttribute("disabled");
         }
+
+        const image = images?.item(index);
+
+        if (item.isIntersecting) {
+          image?.setAttribute("disabled", "");
+        } else {
+          image?.removeAttribute("disabled");
+        }
       }),
     { threshold: THRESHOLD, root: slider },
   );
@@ -145,6 +155,10 @@ const setup = ({ rootId, behavior, interval }: Props) => {
 
   for (let it = 0; it < (dots?.length ?? 0); it++) {
     dots?.item(it).addEventListener("click", () => goToItem(it));
+  }
+
+  for (let it = 0; it < (images?.length ?? 0); it++) {
+    images?.item(it).addEventListener("click", () => goToItem(it));
   }
 
   prev?.addEventListener("click", onClickPrev);

@@ -12,10 +12,12 @@ function VariantSelector({ product }: Props) {
   const { url: currentUrl } = product;
 
   return (
-    <ul class="flex flex-col gap-4">
+    <ul class="flex flex-col-reverse gap-4">
       {Object.keys(possibilities).map((name) => (
         <li class="flex flex-col gap-2">
-          <Text variant="caption">{name}</Text>
+          <Text variant="caption" class="uppercase font-bold">
+            {name === "Tamanho" ? "Selecione o tamanho" : "Selecione a cor"}
+          </Text>
           <ul class="flex flex-row gap-2">
             {Object.entries(possibilities[name]).map(([value, urls]) => {
               const url = urls.find((url) => url === currentUrl) || urls[0];
