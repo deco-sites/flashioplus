@@ -107,7 +107,7 @@ function ImagesMiniature({ images }: Props) {
 function Controls() {
   return (
     <>
-      <div class="flex items-center justify-center z-10 col-start-1 row-start-2">
+      <div class="flex items-center justify-center justify-self-start z-10 col-start-1 row-start-2">
         <Button
           class="h-12 w-12 "
           variant="icon"
@@ -115,14 +115,14 @@ function Controls() {
           aria-label="Previous item"
         >
           <Icon
-            class="text-black"
+            class="text-orange"
             size={30}
             id="ChevronLeft"
             strokeWidth={2}
           />
         </Button>
       </div>
-      <div class="flex items-center justify-center z-10 col-start-3 row-start-2">
+      <div class="flex items-center justify-center justify-self-end z-10 col-start-3 row-start-2">
         <Button
           class="h-12 w-12"
           variant="icon"
@@ -130,7 +130,7 @@ function Controls() {
           aria-label="Next item"
         >
           <Icon
-            class="text-black"
+            class="text-orange"
             size={30}
             id="ChevronRight"
             strokeWidth={2}
@@ -148,7 +148,7 @@ function DetailCarousel({ images }: Props) {
     <>
       <div
         id={id}
-        class="grid grid-cols-[48px_1fr_48px_40px] items-start sm:grid-cols-[120px_1fr_120px_120px] grid-rows-[auto_auto_auto]"
+        class="relative grid grid-cols-[48px_1fr_48px_40px] items-start sm:grid-cols-[120px_1fr_120px_120px] grid-rows-[auto_auto_auto]"
       >
         <Slider class="col-start-1 col-end-4 row-span-full scrollbar-none gap-6">
           {images?.map((image, index) => <DetailItem image={image} />)}
@@ -158,7 +158,7 @@ function DetailCarousel({ images }: Props) {
           <ImagesMiniature images={images} />
         </div>
         <Controls />
-        <div class="w-full flex justify-center col-start-1 col-end-4 row-start-4 bg-light-gray py-2">
+        <div class="w-full flex justify-center absolute col-start-1 col-end-4 bottom-2 py-2">
           <Dots images={images} />
         </div>
 
