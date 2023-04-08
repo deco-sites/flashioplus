@@ -19,35 +19,15 @@ function FilterValues({ key, values }: FilterToggle) {
     : "flex-col";
 
   return (
-    <ul class={`flex flex-wrap gap-2 ${flexDirection}`}>
+    <ul
+      class={`flex flex-col items-end gap-2 ${flexDirection}`}
+    >
       {values.map(({ label, value, url, selected, quantity }) => {
-        if (key === "cor") {
-          return (
-            <a href={url}>
-              <Avatar
-                // deno-lint-ignore no-explicit-any
-                content={value as any}
-                disabled={selected}
-                variant="color"
-              />
-            </a>
-          );
-        }
-
-        if (key === "tamanho") {
-          return (
-            <a href={url}>
-              <Avatar
-                content={label}
-                disabled={selected}
-                variant="abbreviation"
-              />
-            </a>
-          );
-        }
-
         return (
-          <a href={url} class="flex items-center gap-2">
+          <a
+            href={url}
+            class="flex mt-1 gap-0.5 border p-3 p-4 w-full max-w-[166px]"
+          >
             <input type="checkbox" checked={selected} class="hidden" />
             <Text variant="caption">{label}</Text>
             <Text tone="subdued" variant="caption">
@@ -62,14 +42,16 @@ function FilterValues({ key, values }: FilterToggle) {
 
 export default function Filters({ filters }: Props) {
   return (
-    <ul class="flex flex-col gap-6 p-4">
+    <ul class="flex gap-0.5 h-[250px] justify-center flex-grow">
       {filters
         .filter(isToggle)
         .map((filter) => (
-          <li class="flex flex-col gap-4">
-            <Text variant="body">{filter.label}</Text>
+          <details class="flex flex-col group flex-grow gap-4 overflow-scroll first-child:flex-grow last-child:flex-grow max-w-[166px] last-child:max-w-full first-child:max-w-full relative scrollbar-none">
+            <summary class="details-arrow-none font-semibold text-gray-dark py-4 px-8 bg-filter-bg text-center sticky top-0 list-none hover:cursor-pointer focus:outline-none">
+              {filter.label}
+            </summary>
             <FilterValues {...filter} />
-          </li>
+          </details>
         ))}
     </ul>
   );

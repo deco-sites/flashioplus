@@ -1,6 +1,5 @@
 import { useMemo } from "preact/hooks";
 import Text from "$store/components/ui/Text.tsx";
-import Icon from "$store/components/ui/Icon.tsx";
 import type { JSX } from "preact";
 
 const SORT_QUERY_PARAM = "sort";
@@ -41,7 +40,7 @@ function Sort() {
       id="sort"
       name="sort"
       onInput={applySort}
-      class="w-min h-[36px] px-1 rounded m-2 text-button font-button text-default hover:bg-hover cursor-pointer outline-none"
+      class="w-min h-[36px] px-1 m-2 text-button font-semibold text-default bg-transparent border cursor-pointer"
     >
       {options.map(({ value, label }) => (
         <option key={value} value={value} selected={value === sort}>

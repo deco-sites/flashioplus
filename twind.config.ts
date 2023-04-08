@@ -45,6 +45,7 @@ const options: Omit<Options, "selfURL"> = {
         "hover-inverse": "rgba(255, 255, 255, 0.4)",
         "orange": "#FF5A11",
         "light-gray": "#F6F6F6",
+        "filter-bg": "#F6F6F6",
       },
       textColor: {
         "default": "#161616",
@@ -58,6 +59,7 @@ const options: Omit<Options, "selfURL"> = {
         "primary": "#ff5a11",
         "footer": "#999999",
         "card-title": "#B9B9B9",
+        "gray-dark": "#8c8c8c",
       },
       borderColor: {
         "default": "#D4DBD7",
@@ -181,6 +183,30 @@ const options: Omit<Options, "selfURL"> = {
       "-ms-overflow-style": "none",
       "&::-webkit-scrollbar": {
         display: "none",
+      },
+    },
+    "details-arrow-none": {
+      "&::-webkit-details-marker": {
+        display: "none",
+      },
+    },
+    "scrollbar-black": {
+      "scrollbar-width": "auto",
+      "scrollbar-color": "#030303 #ffffff",
+
+      "&::-webkit-scrollbar": {
+        "width": "10px",
+        "height": "10px",
+      },
+
+      "&::-webkit-scrollbar-track": {
+        "background": "#ffffff",
+      },
+
+      "&::-webkit-scrollbar-thumb": {
+        "background-color": "#030303",
+        "border-radius": "10px",
+        "border": "3px solid #ffffff",
       },
     },
   },

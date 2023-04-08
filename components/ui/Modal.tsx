@@ -29,6 +29,7 @@ const styles = {
 
 const Modal = ({
   open,
+  type,
   title,
   mode = "sidebar-right",
   onClose,
@@ -55,6 +56,26 @@ const Modal = ({
       lazy.value = true;
     }
   }, [open]);
+
+  if (type === "Filter") {
+    return (
+      <dialog
+        {...props}
+        ref={ref}
+        class={`bg-transparent top-[0%] w-full max-h-full p-0 backdrop max-w-full ${
+          props.class ?? ""
+        }`}
+        onClick={(e) =>
+          (e.target as HTMLDialogElement).tagName === "DIALOG" && onClose?.()}
+      >
+        <section class=" w-full bg-default flex">
+          <div class="h-full flex flex-grow flex-row">
+            {loading === "lazy" ? lazy.value && children : children}
+          </div>
+        </section>
+      </dialog>
+    );
+  }
 
   return (
     <dialog

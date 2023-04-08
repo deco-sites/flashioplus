@@ -97,9 +97,6 @@ function ProductCard({ product, preload }: Props) {
               {formatPrice(price, offers!.priceCurrency!)}
             </Text>
           </div>
-          <Text class="font-bold text-[14px] text-center flex">
-            {description && textShortner(description, 120)}
-          </Text>
         </a>
       </div>
     </div>
