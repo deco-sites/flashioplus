@@ -1,6 +1,7 @@
 import Container from "$store/components/ui/Container.tsx";
 import { Picture, Source } from "deco-sites/std/components/Picture.tsx";
 import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
+import MobileCarousel from "../components/ui/MobileCarousel.tsx";
 import Carousel from "./Carousel.tsx";
 
 export interface Banner {
@@ -41,9 +42,15 @@ export default function BannnerGrid({
   borderRadius,
   banners = [],
 }: Props) {
+  const images = banners.map((item) => item.srcMobile);
   return (
     <Container>
-      <section class="w-full px-5 md:px-0 mx-auto py-10">
+      {/* Mobile */}
+      <section class="sm:hidden">
+        <MobileCarousel images={images} />
+      </section>
+      {/* Desktop */}
+      <section class="hidden sm:block w-full px-5 md:px-0 mx-auto py-10">
         {title &&
           (
             <div class="py-6 md:py-0 md:pb-[40px] flex items-center mt-6">
@@ -67,7 +74,8 @@ export default function BannnerGrid({
             <a
               href={href}
               class={`overflow-hidden h-[360px] ${
-                itemsPerLine && (itemsPerLine.desktop === 2 && index === 1)
+                itemsPerLine &&
+                  (itemsPerLine.desktop === 2 && (index === 1 || index === 2))
                   ? "col-span-2"
                   : "col-span-1"
               } ${
@@ -89,7 +97,8 @@ export default function BannnerGrid({
                   media="(min-width: 768px)"
                   src={srcDesktop ? srcDesktop : srcMobile}
                   width={(itemsPerLine.desktop === 1 ||
-                      itemsPerLine.desktop === 2 && index === 1)
+                      itemsPerLine.desktop === 2 &&
+                        (index === 1 || index === 2))
                     ? 1200
                     : 400}
                   height={(itemsPerLine.desktop === 1 ||
