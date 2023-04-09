@@ -66,14 +66,12 @@ function Header(
   const searchbar = { ..._searchbar, products, suggestions, configVTEX };
   return (
     <header class={`h-[${headerHeight}]`}>
-      <div class="bg-default fixed w-full z-50">
+      <div class="bg-default fixed w-full z-50 flex flex-col">
         <Alert alerts={alerts} />
         <Navbar items={navItems} searchbar={searchbar} />
       </div>
-
       <Modals
         menu={{ items: navItems }}
-        searchbar={searchbar}
       />
     </header>
   );

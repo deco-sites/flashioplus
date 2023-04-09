@@ -17,10 +17,10 @@ function Alert({ alerts = [], interval = 5 }: Props) {
   const id = useId();
 
   return (
-    <div id={id}>
+    <div id={id} class="order-2 sm:order-[0]">
       <Slider class="bg-alert gap-6 scrollbar-none">
         <div className="max-w-[1200px] mx-auto flex items-center px-3">
-          <div className="w-2/5">
+          <div className="w-2/5 flex-grow">
             {alerts.map((alert) => (
               <Text
                 class="flex justify-center items-center h-[38px]"
@@ -31,11 +31,10 @@ function Alert({ alerts = [], interval = 5 }: Props) {
               </Text>
             ))}
           </div>
-          <div className="w-3/5">
+          <div className="hidden sm:block  w-3/5">
             <ul className="flex justify-end items-center">
               <li className="text-sm px-4 flex items-center">
                 <Icon id="WhatsApp" width={22} height={20} className="mr-2" />
-                {" "}
                 Whatsapp
               </li>
               <li className="text-sm px-4 flex border-r-1 border-black">

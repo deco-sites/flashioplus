@@ -16,21 +16,66 @@ function Navbar({ items, searchbar }: {
     <>
       {/* Mobile Version */}
       <div
-        class={`md:hidden flex flex-row justify-between items-center h-[${navbarHeight}] w-full px-2 gap-2`}
+        class={`md:hidden flex flex-col items-center h-[${navbarHeight}] w-full gap-2`}
       >
-        <HeaderButton variant="menu" />
+        <div class="flex w-full justify-between bg-alert">
+          <HeaderButton variant="menu" />
+          <div class="flex-none w-44 flex items-center justify-end gap-2">
+            <HeaderSearchMenu searchbar={searchbar} />
+            <Button
+              as="a"
+              variant="icon"
+              href="https://flashioplus.frncomunicacao.com.br/account/#/wishlist"
+              aria-label="Favorite"
+            >
+              <Icon id="WhatsApp" width={22} height={20} />
+            </Button>
+            <Button
+              as="a"
+              variant="icon"
+              href="https://flashioplus.frncomunicacao.com.br/account/#/wishlist"
+              aria-label="Favorite"
+            >
+              <Icon id="Heart" width={20} height={20} strokeWidth={0.4} />
+            </Button>
+            <Button
+              as="a"
+              variant="icon"
+              href="/login"
+              aria-label="Log in"
+            >
+              <Icon id="User" width={20} height={20} strokeWidth={0.4} />
+            </Button>
+            <HeaderButton variant="cart" />
+          </div>
+        </div>
+        <div class="flex items-center">
+          <a
+            href="/"
+            class={`flex-grow inline-flex items-center`}
+            aria-label="Store logo"
+          >
+            <Icon id="Logo" width={126} height={16} />
+          </a>
 
-        <a
-          href="/"
-          class={`flex-grow inline-flex items-center min-h-[${navbarHeight}]`}
-          aria-label="Store logo"
-        >
-          <Icon id="Logo" width={126} height={16} />
-        </a>
-
-        <div class="flex gap-1">
-          <HeaderButton variant="search" />
-          <HeaderButton variant="cart" />
+          <div class="flex gap-1">
+            <div class="relative flex flex-grow border max-w-[650px]">
+              <input class="flex-grow w-full p-1" placeholder="Buscar" />
+              <Button
+                variant="icon"
+                href="/login"
+                aria-label="Log in"
+              >
+                <Icon
+                  id="MagnifyingGlass"
+                  width={20}
+                  height={20}
+                  strokeWidth={0.1}
+                  class="text-orange"
+                />
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -46,9 +91,23 @@ function Navbar({ items, searchbar }: {
               <Icon id="Logo" width={130} height={25} />
             </a>
           </div>
-          <div class="flex-none w-44 flex items-center justify-end gap-2">
-            <HeaderButton variant="search" />
-            <HeaderSearchMenu searchbar={searchbar} />
+          <div class="flex-none w-44 flex items-center flex-grow justify-end gap-2">
+            <div class="relative flex flex-grow border max-w-[650px]">
+              <input class="flex-grow w-full p-1" placeholder="Buscar" />
+              <Button
+                variant="icon"
+                href="/login"
+                aria-label="Log in"
+              >
+                <Icon
+                  id="MagnifyingGlass"
+                  width={20}
+                  height={20}
+                  strokeWidth={0.1}
+                  class="text-orange"
+                />
+              </Button>
+            </div>
             <Button
               as="a"
               variant="icon"
