@@ -42,6 +42,7 @@ function Controls({ page }: { page: ProductListingPage }) {
               onClick={() => listingType.value = "grid"}
             >
               <img
+                alt="button to change "
                 width={15}
                 height={15}
                 src={listingType.value === "grid"
@@ -54,6 +55,7 @@ function Controls({ page }: { page: ProductListingPage }) {
               onClick={() => listingType.value = "list"}
             >
               <img
+                alt="button to change "
                 width={15}
                 height={15}
                 src={listingType.value === "list"
@@ -63,12 +65,12 @@ function Controls({ page }: { page: ProductListingPage }) {
             </button>
           </div>
         </div>
-        <div class="flex items-center gap-4 w-full">
-          <Text class="text-4xl ">
-            <p class="text-xl text-orange">Refine sua busca</p>
+        <div class="flex items-center justify-between gap-1 w-full">
+          <Text class="text-4xl flex-grow">
+            <p class="text-xl text-orange ">Refine sua busca</p>
             Filtre aqui
           </Text>
-          <ul class="flex flex-grow gap-1 overflow-x-scroll scrollbar-black">
+          <ul class="flex gap-1 overflow-x-scroll scrollbar-black max-w-[950px]">
             {filters.map((filter) => (
               <li
                 onClick={() => {
