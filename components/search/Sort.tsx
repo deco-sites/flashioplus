@@ -40,7 +40,7 @@ function Sort() {
       id="sort"
       name="sort"
       onInput={applySort}
-      class="w-min h-[36px] px-1 m-2 text-button font-semibold text-default bg-transparent border cursor-pointer"
+      class="w-min h-[36px] px-1 m-2 font-semibold text-[#666666] text-sm bg-transparent border cursor-pointer"
     >
       {options.map(({ value, label }) => (
         <option key={value} value={value} selected={value === sort}>

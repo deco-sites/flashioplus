@@ -9,6 +9,7 @@ import { useSignal } from "@preact/signals";
 import type { ProductListingPage } from "deco-sites/std/commerce/types.ts";
 import type { LoaderReturnType } from "$live/types.ts";
 import Text from "$store/components/ui/Text.tsx";
+import { useUI } from "../../sdk/useUI.ts";
 
 export interface Props {
   page: LoaderReturnType<ProductListingPage | null>;
@@ -20,18 +21,46 @@ function NotFound() {
 
 function Controls({ page }: { page: ProductListingPage }) {
   const open = useSignal(false);
+  const { listingType } = useUI();
   const filters = page?.filters;
   const breadcrumb = page?.breadcrumb;
 
   return (
     <Container class="flex flex-col justify-between mb-4 md:mb-0 p-4 md:p-0 sm:gap-4 md:border-b-1">
       <div class="flex flex-col sm:gap-4 items-start justify-between border-b-1 border-default md:border-none">
-        <div class="flex items-center self-center">
-          <p>Organizar por</p>
-          <Sort />
+        <div class="flex items-center justify-between self-center w-full">
+          <p class="text-gray-dark font-semibold text-sm flex-shrink">
+            Resultaso de busca: {page.products.length} Produtos
+          </p>
+          <div class="flex flex-col sm:flex-row items-center">
+            <p class="text-gray-dark font-semibold text-sm">Organizar por</p>
+            <Sort />
+          </div>
+          <div class="flex gap-2">
+            <button
+              class="focus:outline-none"
+              onClick={() => listingType.value = "grid"}
+            >
+              <img
+                src={listingType.value === "grid"
+                  ? "/images/grid-selected.svg"
+                  : "/images/grid.svg"}
+              />
+            </button>
+            <button
+              class="focus:outline-none"
+              onClick={() => listingType.value = "list"}
+            >
+              <img
+                src={listingType.value === "list"
+                  ? "/images/list-selected.svg"
+                  : "/images/list.svg"}
+              />
+            </button>
+          </div>
         </div>
-        <div class="flex items-center w-full">
-          <Text class="text-4xl h-[68px] min-w-[257px]">
+        <div class="flex items-center gap-4 w-full">
+          <Text class="text-4xl ">
             <p class="text-xl text-orange">Refine sua busca</p>
             Filtre aqui
           </Text>
@@ -41,7 +70,7 @@ function Controls({ page }: { page: ProductListingPage }) {
                 onClick={() => {
                   open.value = true;
                 }}
-                class="w-[150px] text-gray-dark font-semibold bg-filter-bg text-[13px] py-4 px-8"
+                class="w-[150px] cursor-pointer text-gray-dark font-semibold bg-filter-bg text-[13px] py-4 px-8"
               >
                 {filter.label}
               </li>
@@ -66,7 +95,7 @@ function Controls({ page }: { page: ProductListingPage }) {
 
 function SearchControls({ page }: Props) {
   if (!page || !page.filters || page.filters.length === 0) {
-    return <p>{JSON.stringify(page)}</p>;
+    return <NotFound />;
   }
 
   return <Controls page={page} />;

@@ -9,12 +9,14 @@ const displayCart = signal(false);
 const displayMenu = signal(false);
 const displaySearchbar = signal(false);
 const detailsToggle = signal("Descrição");
+const listingType = signal("grid");
 
 const state = {
   displayCart,
   displayMenu,
   displaySearchbar,
   detailsToggle,
+  listingType,
 };
 
 export const useUI = () => state;

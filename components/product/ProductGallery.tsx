@@ -5,6 +5,7 @@ import Text from "$store/components/ui/Text.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import type { LoaderReturnType } from "$live/types.ts";
 import type { ProductListingPage } from "deco-sites/std/commerce/types.ts";
+import { useUI } from "../../sdk/useUI.ts";
 
 export interface Props {
   page: LoaderReturnType<ProductListingPage | null>;
@@ -19,12 +20,26 @@ function NotFound() {
 }
 
 function Gallery({ page }: { page: ProductListingPage }) {
+  const { listingType } = useUI();
+
   return (
     <Container class="px-4 sm:py-10">
-      <div class="relative grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-10 items-center">
+      <div
+        class={`relative ${
+          listingType.value === "grid"
+            ? "grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-10 items-center"
+            : "grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-10 items-center"
+        }`}
+      >
         {page.products?.map((product, index) => (
           <div class="w-full list-none">
-            <ProductCard product={product} preload={index === 0} />
+            <ProductCard
+              product={product}
+              preload={index === 0}
+              width={268}
+              heigth={268}
+              direction={listingType.value === "grid" ? "col" : "row"}
+            />
           </div>
         ))}
       </div>
