@@ -2,8 +2,8 @@ import Text from "$store/components/ui/Text.tsx";
 
 function Newsletter() {
   return (
-    <div class="flex flex-col sm:flex-row items-center flex-1">
-      <div className="w-[200px] h-[125px] border-gray-300 border-t-1 mx-5">
+    <div class="flex flex-col sm:flex-row items-center w-full">
+      <div className="border-gray-300 border-t-1 mx-5">
       </div>
       <div class="flex flex-col gap-2 max-w-[365px] mx-2.5 my-2.5">
         <Text variant="heading-2" tone="default">
@@ -14,13 +14,13 @@ function Newsletter() {
           privacidade. Você pode cancelar nossa comunicação a qualquer momento.
         </Text>
       </div>
-      <form class="flex flex-row items-center w-full sm:w-full mx-2.5">
+      <form class="flex flex-row mx-2.5 flex-grow max-w-[670px]">
         <input
-          class="py-2 px-3 flex-grow bg-white rounded-l-full rounded-tl-full text-default h-[60px]"
+          class="py-2 px-3 flex-grow bg-white w-[50%] rounded-l-full overflow-hidden rounded-tl-full text-default"
           placeholder="Endereço de e-mail"
         />
         <button
-          class="py-2 px-3 bg-interactive rounded-r-full rounded-tr-full h-[60px] w-[150px] text-white text-xs font-bold"
+          class="py-2 px-3 bg-interactive p-6 rounded-r-full w-[147px] rounded-tr-full text-white text-xs font-bold"
           type="bgutton"
         >
           Inscrever-se

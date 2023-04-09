@@ -110,9 +110,6 @@ export default function BannnerGrid({
           ))}
         </div>
       </section>
-      <section>
-        <Carousel />
-      </section>
     </Container>
   );
 }
