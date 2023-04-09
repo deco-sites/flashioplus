@@ -42,6 +42,8 @@ function Controls({ page }: { page: ProductListingPage }) {
               onClick={() => listingType.value = "grid"}
             >
               <img
+                width={15}
+                height={15}
                 src={listingType.value === "grid"
                   ? "/images/grid-selected.svg"
                   : "/images/grid.svg"}
@@ -52,6 +54,8 @@ function Controls({ page }: { page: ProductListingPage }) {
               onClick={() => listingType.value = "list"}
             >
               <img
+                width={15}
+                height={15}
                 src={listingType.value === "list"
                   ? "/images/list-selected.svg"
                   : "/images/list.svg"}
