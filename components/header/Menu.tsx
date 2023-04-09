@@ -39,14 +39,14 @@ function MenuItem({ item, level = 0 }: { item: INavItem; level?: number }) {
           <Button variant="icon">
             <Icon
               class={open.value === true ? "hidden" : "block"}
-              id="Plus"
+              id="ChevronRight"
               height={20}
               width={20}
               strokeWidth={1.5}
             />
             <Icon
               class={open.value === true ? "block" : "hidden"}
-              id="Minus"
+              id="ChevronDown"
               height={20}
               width={20}
               strokeWidth={1.5}

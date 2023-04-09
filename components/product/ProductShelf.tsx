@@ -11,6 +11,7 @@ import type { Product } from "deco-sites/std/commerce/types.ts";
 
 export interface Props {
   title: string;
+  subtitle?: string;
   products: LoaderReturnType<Product[] | null>;
   itemsPerPage?: number;
 }
@@ -18,6 +19,7 @@ export interface Props {
 function ProductShelf({
   title,
   products,
+  subtitle,
 }: Props) {
   const id = useId();
 
@@ -28,10 +30,13 @@ function ProductShelf({
   return (
     <Container
       id={id}
-      class="grid grid-cols-[48px_1fr_48px] grid-rows-[48px_1fr_48px_1fr] py-10 px-0 sm:px-5"
+      class="grid grid-cols-[48px_1fr_48px] grid-rows-[88px_1fr_48px_1fr] py-10 px-0 sm:px-5"
     >
-      <h2 class="text-center row-start-1 col-span-full">
-        <Text variant="heading-2">{title}</Text>
+      <h2 class="row-start-1 col-span-full flex flex-col justify-self-start">
+        <Text variant="heading-2" class="text-2xl font-normal text-orange">
+          {title}
+        </Text>
+        <Text variant="heading-2" class="text-4xl font-bold">{subtitle}</Text>
       </h2>
 
       <Slider
@@ -46,15 +51,15 @@ function ProductShelf({
       </Slider>
 
       <>
-        <div class="hidden relative sm:block z-10 col-start-1 row-start-3">
-          <div class="absolute right-1/2 bg-interactive-inverse rounded-full border-default border">
+        <div class=" relative z-10 col-start-1 row-start-3">
+          <div class="absolute sm:right-1/2 bg-interactive-inverse rounded-full border-default border">
             <Button variant="icon" data-slide="prev" aria-label="Previous item">
               <Icon size={20} id="ChevronLeft" strokeWidth={3} />
             </Button>
           </div>
         </div>
-        <div class="hidden relative sm:block z-10 col-start-3 row-start-3">
-          <div class="absolute left-1/2 bg-interactive-inverse rounded-full border-default border">
+        <div class="relative z-10 col-start-3 row-start-3">
+          <div class="absolute left-2 bg-interactive-inverse rounded-full border-default border">
             <Button variant="icon" data-slide="next" aria-label="Next item">
               <Icon size={20} id="ChevronRight" strokeWidth={3} />
             </Button>
