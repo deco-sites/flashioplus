@@ -8,6 +8,7 @@ import { useVariantPossibilities } from "$store/sdk/useVariantPossiblities.ts";
 import type { Product } from "deco-sites/std/commerce/types.ts";
 import { textShortner } from "../../helpers/textShortner.ts";
 import Counter from "./Counter.tsx";
+import { useUI } from "../../sdk/useUI.ts";
 
 /**
  * A simple, inplace sku selector to be displayed once the user hovers the product card
@@ -44,62 +45,66 @@ interface Props {
   product: Product;
   /** Preload card image */
   preload?: boolean;
+  width?: number;
+  heigth?: number;
+  direction?: string;
 }
 
-function ProductCard({ product, preload }: Props) {
+function ProductCard(
+  { product, preload, width = 164, heigth = 178, direction = "col" }: Props,
+) {
   const {
     url,
     productID,
-    name,
-    description,
     isVariantOf,
     image: images,
     offers,
   } = product;
   const [front, back] = images ?? [];
   const { listPrice, price, seller } = useOffer(offers);
-
+  const { listingType } = useUI();
   return (
     <div
       data-deco="view-product"
       id={`product-card-${productID}`}
-      class="w-full group max-w-[178px]"
+      class={`group ${
+        direction === "row" ? "flex items-center" : "flex flex-col"
+      } gap-3`}
     >
       <a href={url} aria-label="product link">
-        <div class="relative w-full">
+        <div class="relative ">
           <Image
             src={front.url!}
             alt={front.alternateName}
-            width={164}
-            height={178}
-            class="rounded w-full h-[165px] object-contain"
+            width={width}
+            height={heigth}
+            class={`rounded `}
             preload={preload}
             loading={preload ? "eager" : "lazy"}
           />
         </div>
       </a>
-      <div class="flex flex-col gap-1 py-2">
+      <div
+        class={`flex flex-col gap-1 py-2 ${
+          listingType.value === "list" ? "items-start" : "items-center"
+        }`}
+      >
         <a href={url} aria-label="product link">
-          <Text class="uppercase text-sm font-bold text-card-title text-center flex justify-center">
+          <Text class="uppercase mb-4 text-sm font-bold text-card-title text-center flex justify-center">
             {isVariantOf?.name}
           </Text>
         </a>
-        <div class="w-full flex justify-center">
-          <Counter />
-        </div>
+        <Counter />
         <a href={url} aria-label="product link">
           <div class="flex justify-between text-sm gap-2">
             <Text class="line-through text-card-title">
               {formatPrice(listPrice, offers!.priceCurrency!)}
             </Text>
-            <Text class="flex flex-col items-center font-semibold text-footer">
+            <Text class="flex items-center font-semibold text-footer">
               <p class="text-card-title">Por</p>{" "}
               {formatPrice(price, offers!.priceCurrency!)}
             </Text>
           </div>
-          <Text class="font-bold text-[14px] text-center flex">
-            {description && textShortner(description, 120)}
-          </Text>
         </a>
       </div>
     </div>

@@ -12,7 +12,7 @@ const Counter = () => {
   };
 
   return (
-    <div class="flex font-semibold items-center border-2 border-gray-200 rounded-[4px] overflow-hidden">
+    <div class="flex font-semibold items-center w-min border-2 border-gray-200 rounded-[4px] overflow-hidden">
       <button
         class="disabled:(bg-gray-100 text-gray-400) bg-white px-0.5 font-semibold text-sm text-orange"
         disabled={quantity.value === 0}
