@@ -78,7 +78,7 @@ function ProductCard(
             alt={front.alternateName}
             width={width}
             height={heigth}
-            class={`rounded `}
+            class={`rounded w-[${width}px] h-[${heigth}px]`}
             preload={preload}
             loading={preload ? "eager" : "lazy"}
           />
