@@ -77,7 +77,7 @@ function ProductCard(
         data-deco="view-product"
         id={`product-card-${productID}`}
         class={`group ${
-          direction === "row" ? "flex items-center" : "flex flex-col"
+          listingType.value === "list" ? "flex items-center" : "flex flex-col"
         } gap-3`}
       >
         <div class="relative flex flex-col items-center">
@@ -87,14 +87,17 @@ function ProductCard(
               alt={front.alternateName}
               width={width}
               height={heigth}
-              class={`rounded w-[${width}px] h-[${heigth}px]`}
+              class={`rounded object-contain`}
               preload={preload}
               loading={preload ? "eager" : "lazy"}
             />
           </a>
-          <p class="absolute top-0 right-0 text-xs bg-[#f71963] text-white px-1 py-0.5">
-            -{Math.floor(((listPrice! - price!) * 100) / listPrice!)}%
-          </p>
+          {listPrice! > 0 &&
+            (
+              <p class="absolute top-0 right-0 text-xs bg-[#f71963] text-white px-1 py-0.5">
+                -{Math.floor(((listPrice! - price!) * 100) / listPrice!)}%
+              </p>
+            )}
           <a
             href={url}
             class={`hidden  items-center gap-1 justify-center sm:group-hover:flex absolute top-0 w-[${width}px] h-[${heigth}px] bg-[#dcdcdc50]`}

@@ -27,8 +27,8 @@ function Gallery({ page }: { page: ProductListingPage }) {
       <div
         class={`relative ${
           listingType.value === "grid"
-            ? "grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-10 items-center"
-            : "grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-10 items-center"
+            ? "grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-10 items-start"
+            : "grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-10 items-start"
         }`}
       >
         {page.products?.map((product, index) => (
@@ -36,9 +36,8 @@ function Gallery({ page }: { page: ProductListingPage }) {
             <ProductCard
               product={product}
               preload={index === 0}
-              width={268}
-              heigth={268}
-              direction={listingType.value === "grid" ? "col" : "row"}
+              width={200}
+              heigth={200}
             />
           </div>
         ))}
