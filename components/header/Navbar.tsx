@@ -41,7 +41,7 @@ function Navbar({ items, searchbar }: {
             <Button
               as="a"
               variant="icon"
-              href="/login"
+              href="#"
               aria-label="Log in"
             >
               <Icon id="User" width={20} height={20} strokeWidth={0.4} />

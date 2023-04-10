@@ -92,6 +92,9 @@ function ProductCard(
               loading={preload ? "eager" : "lazy"}
             />
           </a>
+          <p class="absolute top-0 right-0 text-xs bg-[#f71963] text-white px-1 py-0.5">
+            -{Math.floor(((listPrice! - price!) * 100) / listPrice!)}%
+          </p>
           <div
             class={`hidden  items-center gap-1 justify-center sm:group-hover:flex absolute top-0 w-[${width}px] h-[${heigth}px] bg-[#dcdcdc50]`}
           >
