@@ -148,7 +148,7 @@ function DetailCarousel({ images }: Props) {
     <>
       <div
         id={id}
-        class="relative grid grid-cols-[48px_1fr_48px_40px] items-start sm:grid-cols-[120px_1fr_120px_120px] grid-rows-[auto_auto_auto]"
+        class="relative grid grid-cols-[48px_1fr_48px_40px] items-start sm:grid-cols-[120px_1fr_120px_120px] grid-rows-[200px_auto_auto]"
       >
         <Slider class="col-start-1 col-end-4 row-span-full scrollbar-none gap-6">
           {images?.map((image, index) => <DetailItem image={image} />)}

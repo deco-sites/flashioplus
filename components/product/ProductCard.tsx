@@ -95,10 +95,14 @@ function ProductCard(
           <p class="absolute top-0 right-0 text-xs bg-[#f71963] text-white px-1 py-0.5">
             -{Math.floor(((listPrice! - price!) * 100) / listPrice!)}%
           </p>
-          <div
+          <a
+            href={url}
             class={`hidden  items-center gap-1 justify-center sm:group-hover:flex absolute top-0 w-[${width}px] h-[${heigth}px] bg-[#dcdcdc50]`}
           >
-            <Button class="!rounded-full h-[50px] w-[50px] !bg-default">
+            <Button
+              onClick={(e) => e.preventDefault()}
+              class="!rounded-full h-[50px] w-[50px] !bg-default"
+            >
               <Icon
                 class="text-black"
                 id="Heart"
@@ -108,7 +112,10 @@ function ProductCard(
             </Button>
             <Button
               class="!rounded-full h-[50px] w-[50px] !bg-default"
-              onClick={() => open.value = true}
+              onClick={(e) => {
+                e.preventDefault();
+                open.value = true;
+              }}
             >
               <Icon
                 class="text-black hover:text-orange"
@@ -117,7 +124,7 @@ function ProductCard(
                 height={20}
               />
             </Button>
-          </div>
+          </a>
         </div>
         <div
           class={`flex flex-col gap-1 py-2 ${

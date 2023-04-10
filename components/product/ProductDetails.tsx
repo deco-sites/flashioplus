@@ -8,6 +8,7 @@ import { useOffer } from "$store/sdk/useOffer.ts";
 import { formatPrice } from "$store/sdk/format.ts";
 import type { LoaderReturnType } from "$live/types.ts";
 import type { ProductDetailsPage } from "deco-sites/std/commerce/types.ts";
+import mock from "../ui/mockReview.json" assert { type: "json" };
 
 import ProductSelector from "./ProductVariantSelector.tsx";
 import Toggle from "../ui/Toggle.tsx";
@@ -16,6 +17,7 @@ import Input from "../ui/Input.tsx";
 import { useSignal } from "@preact/signals";
 import Icon from "$store/components/ui/Icon.tsx";
 import DetailCarousel from "../ui/DetailCarousel.tsx";
+import ReviewArea, { StarRating } from "../ui/Review.tsx";
 
 export interface Props {
   page: LoaderReturnType<ProductDetailsPage | null>;
@@ -56,6 +58,10 @@ function Details({ page }: { page: ProductDetailsPage }) {
   const especifications = isVariantOf?.additionalProperty?.filter((item) =>
     item.name === "Estampa" || item.name === "Material"
   );
+  const ratingAverage = mock.reduce(
+    (prev, curr) => prev + curr.reviewRating.ratingValue,
+    0,
+  ) / mock.length;
   return (
     <Container class="py-10">
       <div class="flex flex-col gap-4 ">
@@ -63,12 +69,28 @@ function Details({ page }: { page: ProductDetailsPage }) {
         <div class="flex flex-col overflow-auto snap-x snap-mandatory p-8 scroll-smooth sm:gap-8">
           <div class="flex flex-col items-center lg:flex-row lg:gap-2 lg:items-start">
             <div class="flex gap-2 max-w-full lg:max-w-[450px] flex-col lg:flex-row justify-center items-center">
-              <DetailCarousel images={[front.url!, back.url!]} />
+              {images != undefined
+                ? images?.length > 1
+                  ? <DetailCarousel images={[front.url!, back.url!]} />
+                  : (
+                    <Image
+                      width={424}
+                      height={415}
+                      src={front.url!}
+                      alt="Detalhe visual do produto"
+                      class="!max-w-none"
+                    />
+                  )
+                : <div />}
             </div>
             {/* Product Info */}
             <div class=" flex flex-col gap-4 h-full px-4 sm:px-0">
               {/* Code and name */}
               <div class="mt-4 flex  flex-col sm:mt-0">
+                <div class="flex items-center gap-1">
+                  <StarRating range={ratingAverage} />
+                  <p>{`(${mock.length})`}</p>
+                </div>
                 <Text variant="heading-1" class="text-4xl !font-normal mb-2">
                   {isVariantOf?.name}
                 </Text>
@@ -78,7 +100,7 @@ function Details({ page }: { page: ProductDetailsPage }) {
               <div class="w-full">
                 <ProductSelector product={product} />
               </div>
-              <div class="flex w-full justify-between gap-5">
+              <div class="flex flex-col sm:flex-row w-full justify-between gap-5">
                 {/* Prices */}
                 <div class="mt-4">
                   <div class="flex flex-row gap-2 items-end mb-4">
