@@ -29,7 +29,7 @@ function DetailItem({ image }: Item) {
         src={image}
         alt="Detalhe visual do produto"
         class="!max-w-none"
-        loading="lazy"
+        loading="eager"
       />
     </div>
   );
