@@ -24,7 +24,7 @@ function Input(
         />
         {label}
       </label>
-      <div class="flex gap-4">
+      <div class="flex flex-col sm:flex-row gap-4">
         <input class="p-2 border border-black"></input>
         <button
           class=" uppercase font-bold text-white bg-[#979899] rounded-[25px] py-[5px] px-[25px]"

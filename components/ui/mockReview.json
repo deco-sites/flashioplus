@@ -1,0 +1,16 @@
+[
+    {
+    "reviewBody": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus soluta suscipit a nam natus distinctio.",
+    "name": "Not a happy camper",
+    "reviewRating": {
+        "ratingValue": 1
+    }
+    },
+    {
+    "reviewBody": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus soluta suscipit a nam natus. Velit?",
+    "name": "Value purchase",
+    "reviewRating": {
+        "ratingValue": 4
+    }
+    }
+]
