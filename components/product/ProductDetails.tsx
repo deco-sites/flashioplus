@@ -18,6 +18,7 @@ import { useSignal } from "@preact/signals";
 import Icon from "$store/components/ui/Icon.tsx";
 import DetailCarousel from "../ui/DetailCarousel.tsx";
 import ReviewArea, { StarRating } from "../ui/Review.tsx";
+import { headerHeight, navbarHeight } from "../header/constants.ts";
 
 export interface Props {
   page: LoaderReturnType<ProductDetailsPage | null>;
@@ -87,9 +88,24 @@ function Details({ page }: { page: ProductDetailsPage }) {
             <div class=" flex flex-col gap-4 h-full px-4 sm:px-0">
               {/* Code and name */}
               <div class="mt-4 flex  flex-col sm:mt-0">
-                <div class="flex items-center gap-1">
-                  <StarRating range={ratingAverage} />
-                  <p>{`(${mock.length})`}</p>
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-1">
+                    <StarRating range={ratingAverage} />
+                    <p>{`(${mock.length})`}</p>
+                  </div>
+                  <a
+                    href="#productDetail"
+                    class="flex items-center gap-1 text-orange text-xs"
+                  >
+                    saiba mais sobre esse produto{" "}
+                    <Icon
+                      width={12}
+                      height={12}
+                      id="ChevronDown"
+                      strokeWidth={1}
+                      class="text-black rounded-full border"
+                    />
+                  </a>
                 </div>
                 <Text variant="heading-1" class="text-4xl !font-normal mb-2">
                   {isVariantOf?.name}
@@ -160,7 +176,11 @@ function Details({ page }: { page: ProductDetailsPage }) {
             </div>
           </div>
           {/* Description card */}
-          <div class="w-full lg:self-start">
+          <div
+            style={{ scrollMargin: "140px" }}
+            id="productDetail"
+            class="w-full lg:self-start "
+          >
             <Toggle />
             {detailsToggle.value === "Descrição" &&
               (
