@@ -142,7 +142,7 @@ function Controls() {
 }
 
 function DetailCarousel({ images }: Props) {
-  const id = useId();
+  const id = useId() + "" + (Math.floor(Math.random() * (10001 - 1 + 1)) + 1);
 
   return (
     <>
