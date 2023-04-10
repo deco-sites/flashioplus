@@ -77,6 +77,43 @@ const Modal = ({
     );
   }
 
+  if (type === "Product") {
+    return (
+      <dialog
+        {...props}
+        ref={ref}
+        class={`bg-transparent ${
+          open ? "flex items-center justify-center" : ""
+        } p-0 m-0 max-w-full w-full max-h-full h-full backdrop ${variant} ${
+          props.class ?? ""
+        }`}
+        onClick={(e) =>
+          (e.target as HTMLDialogElement).tagName === "DIALOG" && onClose?.()}
+      >
+        <section class=" bg-default flex flex-col w-[80%] p-2">
+          <header class="flex px-4 justify-between items-center py-2 border-b ">
+            <h1>
+              <Text variant="heading-2" class="text-white font-normal">
+                {title}
+              </Text>
+            </h1>
+            <Button variant="icon" onClick={onClose}>
+              <Icon
+                id="XMark"
+                width={30}
+                height={30}
+                strokeWidth={2}
+              />
+            </Button>
+          </header>
+          <div class="overflow-y-auto h-full flex flex-col">
+            {loading === "lazy" ? lazy.value && children : children}
+          </div>
+        </section>
+      </dialog>
+    );
+  }
+
   return (
     <dialog
       {...props}
