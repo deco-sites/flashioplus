@@ -18,7 +18,6 @@ import { useSignal } from "@preact/signals";
 import Icon from "$store/components/ui/Icon.tsx";
 import DetailCarousel from "../ui/DetailCarousel.tsx";
 import ReviewArea, { StarRating } from "../ui/Review.tsx";
-import { headerHeight, navbarHeight } from "../header/constants.ts";
 
 export interface Props {
   page: LoaderReturnType<ProductDetailsPage | null>;
@@ -69,7 +68,7 @@ function Details({ page }: { page: ProductDetailsPage }) {
         {/* Image Gallery */}
         <div class="flex flex-col overflow-auto snap-x snap-mandatory p-8 scroll-smooth sm:gap-8">
           <div class="flex flex-col items-center lg:flex-row lg:gap-2 lg:items-start">
-            <div class="flex gap-2 max-w-full lg:max-w-[450px] flex-col lg:flex-row justify-center items-center">
+            <div class="max-w-full  sm:max-w-[540px] ">
               {images != undefined
                 ? images?.length > 1
                   ? <DetailCarousel images={[front.url!, back.url!]} />

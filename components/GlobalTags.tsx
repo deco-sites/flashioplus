@@ -8,24 +8,14 @@ function GlobalTags() {
         rel="icon"
         type="image/png"
         sizes="32x32"
-        href={asset("/favicon-32x32.png")}
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="16x16"
-        href={asset("/favicon-16x16.png")}
-      />
-      <link
-        rel="shortcut icon"
-        type="image/x-icon"
-        href={asset("/favicon-32x32.png")}
+        href={"https://www.frncubo.com/wp-content/themes/frn3/img/favicon.ico"}
       />
 
       {/* Web Manifest */}
       <link rel="manifest" href={asset("/site.webmanifest")} />
       <meta name="theme-color" content="#221E1F" />
       <meta name="msapplication-TileColor" content="#221E1F" />
+      <title>FRN³</title>
 
       {
         /*

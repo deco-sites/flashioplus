@@ -70,6 +70,7 @@ function ProductCard(
   const [front, back] = images ?? [];
   const { listPrice, price, seller } = useOffer(offers);
   const { listingType } = useUI();
+  const outOfStock = price === undefined || price === 0;
   const open = useSignal(false);
   return (
     <>
@@ -113,20 +114,23 @@ function ProductCard(
                 height={20}
               />
             </Button>
-            <Button
-              class="!rounded-full h-[50px] w-[50px] !bg-default"
-              onClick={(e) => {
-                e.preventDefault();
-                open.value = true;
-              }}
-            >
-              <Icon
-                class="text-black hover:text-orange"
-                id="ShoppingCart"
-                width={20}
-                height={20}
-              />
-            </Button>
+            {!outOfStock &&
+              (
+                <Button
+                  class="!rounded-full h-[50px] w-[50px] !bg-default"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    open.value = true;
+                  }}
+                >
+                  <Icon
+                    class="text-black hover:text-orange"
+                    id="ShoppingCart"
+                    width={20}
+                    height={20}
+                  />
+                </Button>
+              )}
           </a>
         </div>
         <div
@@ -139,18 +143,30 @@ function ProductCard(
               {isVariantOf?.name}
             </Text>
           </a>
-          <Counter />
-          <a href={url} aria-label="product link">
-            <div class="flex justify-between text-sm gap-2">
-              <Text class="line-through text-card-title">
-                {formatPrice(listPrice, offers!.priceCurrency!)}
-              </Text>
-              <Text class="flex items-center font-semibold text-footer">
-                <p class="text-card-title">Por</p>{" "}
-                {formatPrice(price, offers!.priceCurrency!)}
-              </Text>
-            </div>
-          </a>
+          {outOfStock
+            ? (
+              <div class="transition duration-200 flex justify-center border items-center rounded-[10px] bg-white hover:bg-black  w-[5.8rem] h-[2.4rem] top-0 right-0  w-[93px]">
+                <Text class="text-primary transition duration-200 w-full h-full text-center leading-9 hover:text-white  tracking-wider text-sm">
+                  Avise-me
+                </Text>
+              </div>
+            )
+            : (
+              <>
+                <Counter />
+                <a href={url} aria-label="product link">
+                  <div class="flex justify-between text-sm gap-2">
+                    <Text class="line-through text-card-title">
+                      {formatPrice(listPrice, offers!.priceCurrency!)}
+                    </Text>
+                    <Text class="flex items-center font-semibold text-footer">
+                      <p class="text-card-title">Por</p>{" "}
+                      {formatPrice(price, offers!.priceCurrency!)}
+                    </Text>
+                  </div>
+                </a>
+              </>
+            )}
         </div>
       </div>
       <Modal
