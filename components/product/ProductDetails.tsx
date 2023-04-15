@@ -18,7 +18,7 @@ import { useSignal } from "@preact/signals";
 import Icon from "$store/components/ui/Icon.tsx";
 import DetailCarousel from "../ui/DetailCarousel.tsx";
 import ReviewArea, { StarRating } from "../ui/Review.tsx";
-import { headerHeight, navbarHeight } from "../header/constants.ts";
+import { headerHeightDesktop, navbarHeight } from "../header/constants.ts";
 
 export interface Props {
   page: LoaderReturnType<ProductDetailsPage | null>;
