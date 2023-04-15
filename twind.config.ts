@@ -209,6 +209,35 @@ const options: Omit<Options, "selfURL"> = {
         "border": "3px solid #ffffff",
       },
     },
+    "scrollbar-black-tranparent-y": {
+      "scrollbar-width": "auto",
+      "scrollbar-color": "#030303 ",
+
+      "&::-webkit-scrollbar": {
+        "width": "4px",
+        "height": "0px",
+      },
+
+      "&::-webkit-scrollbar-thumb": {
+        "background-color": "#030303",
+        "border-radius": "10px",
+      },
+    },
+
+    "scrollbar-black-tranparent-x": {
+      "scrollbar-width": "auto",
+      "scrollbar-color": "#030303 ",
+
+      "&::-webkit-scrollbar": {
+        "width": "0px",
+        "height": "4px",
+      },
+
+      "&::-webkit-scrollbar-thumb": {
+        "background-color": "#030303",
+        "border-radius": "10px",
+      },
+    },
   },
 };
 
