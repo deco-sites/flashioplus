@@ -27,7 +27,7 @@ function NavItem({ item }: { item: INavItem }) {
       {children && children.length > 0 &&
         (
           <div
-            class={`fixed bg-default invisible hover:visible group-hover:visible z-50 border-t-1 border-b-2 border-default w-screen mt-[${headerHeight}]`}
+            class={`fixed bg-default invisible hover:visible group-hover:visible z-50 border-t-1 border-b-2 border-default w-screen mt-[180px]`}
             style={{ top: "0px", left: "0px" }}
           >
             <div className="max-w-[1200px] flex items-start justify-between mx-auto gap-6">
