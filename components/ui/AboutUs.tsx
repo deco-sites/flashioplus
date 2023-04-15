@@ -40,14 +40,14 @@ function Item({ href, icon, linkText, text, title }: Item) {
 function AboutUs({ image, title, itens }: Props) {
   return (
     <section
-      class="h-[525px] bg-cover mt-8 flex flex-col gap-6 items-center justify-center"
+      class="h-[525px] bg-cover mt-8 sm:px-4 flex flex-col gap-6 items-center justify-center"
       style={{ backgroundImage: `url(${image})` }}
     >
       <div class="flex flex-col items-center">
         <h2 class="text-2xl text-white">Quem somos?</h2>
         <p class="text-7xl text-white font-medium">{title}</p>
       </div>
-      <div class="flex gap-3 overflow-scroll max-w-full px-4 scrollbar-none">
+      <div class="flex flex-col sm:flex-row gap-3 overflow-scroll max-w-full px-4 my-4 sm:pb-4 scrollbar-black-tranparent-y sm:scrollbar-black-tranparent-x">
         {itens.map((item) => <Item {...item} />)}
       </div>
     </section>
