@@ -48,7 +48,9 @@ const isHTMLElement = (x: Element): x is HTMLElement =>
 
 const setup = ({ rootId, behavior, interval }: Props) => {
   const root = document.getElementById(rootId);
-  const slider = root?.querySelector(`[${ATTRIBUTES["data-slider"]}]`);
+  const slider = root?.querySelector(
+    `[${ATTRIBUTES["data-slider"]}]`,
+  ) as HTMLElement;
   const items = root?.querySelectorAll(`[${ATTRIBUTES["data-slider-item"]}]`);
   const prev = root?.querySelector(`[${ATTRIBUTES['data-slide="prev"']}]`);
   const next = root?.querySelector(`[${ATTRIBUTES['data-slide="next"']}]`);
@@ -99,7 +101,7 @@ const setup = ({ rootId, behavior, interval }: Props) => {
     slider.scrollTo({
       top: 0,
       behavior,
-      left: item.offsetLeft - root.offsetLeft,
+      left: item.offsetLeft - slider.offsetLeft,
     });
   };
 

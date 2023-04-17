@@ -29,6 +29,7 @@ function DetailItem({ image }: Item) {
         src={image}
         alt="Detalhe visual do produto"
         loading="eager"
+        class="lg:max-w-[424px]"
       />
     </div>
   );
@@ -148,9 +149,12 @@ function DetailCarousel({ images }: Props) {
     <>
       <div
         id={id}
-        class="relative grid grid-cols-[48px_1fr_48px_40px] items-start sm:grid-cols-[120px_1fr_1fr_120px] grid-rows-[200px_auto_auto]"
+        class="relative  grid grid-cols-[48px_1fr_48px_40px] items-start sm:grid-cols-[1fr_1fr_1fr_1fr] grid-rows-[200px_auto_auto]"
       >
-        <Slider class="col-start-1 col-end-4 row-span-full scrollbar-none gap-6">
+        <Slider
+          class="col-start-1 col-end-4 row-span-full scrollbar-none gap-6 first:ml-0 max-w-[550px]"
+          snap="snap-center sm:snap-start py-4 block first:ml-6 sm:first:ml-0 last:mr-6 sm:last:mr-0"
+        >
           {images?.map((image, index) => <DetailItem image={image} />)}
         </Slider>
 
