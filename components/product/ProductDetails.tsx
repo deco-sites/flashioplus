@@ -62,6 +62,8 @@ function Details({ page }: { page: ProductDetailsPage }) {
     (prev, curr) => prev + curr.reviewRating.ratingValue,
     0,
   ) / mock.length;
+  const outOfStock = price === undefined || price === 0;
+
   return (
     <Container class="py-10">
       <div class="flex flex-col gap-4 ">
@@ -151,12 +153,23 @@ function Details({ page }: { page: ProductDetailsPage }) {
                   </div>
                 </div>
                 <div class="flex items-center gap-2">
-                  {seller && (
-                    <AddToCartButton
-                      skuId={productID}
-                      sellerId={seller}
-                    />
-                  )}
+                  {outOfStock
+                    ? (
+                      <div class="transition hover:cursor-pointer duration-200 flex justify-center border items-center rounded-[10px] bg-white hover:bg-black h-[48px] w-[230px] flex items-center">
+                        <Text class="text-primary transition duration-200 text-center w-full h-full flex items-center justify-center hover:text-white  tracking-wider text-sm">
+                          Avise-me
+                        </Text>
+                      </div>
+                    )
+                    : (
+                      seller &&
+                      (
+                        <AddToCartButton
+                          skuId={productID}
+                          sellerId={seller}
+                        />
+                      )
+                    )}
                   <Button
                     variant="icon"
                     aria-label="Favorite"

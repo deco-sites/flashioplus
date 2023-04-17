@@ -145,7 +145,7 @@ function ProductCard(
           </a>
           {outOfStock
             ? (
-              <div class="transition duration-200 flex justify-center border items-center rounded-[10px] bg-white hover:bg-black  w-[5.8rem] h-[2.4rem] top-0 right-0  w-[93px]">
+              <div class="transition hover:cursor-pointer duration-200 flex justify-center border items-center rounded-[10px] bg-white hover:bg-black  w-[5.8rem] h-[2.4rem] top-0 right-0  w-[93px]">
                 <Text class="text-primary transition duration-200 w-full h-full text-center leading-9 hover:text-white  tracking-wider text-sm">
                   Avise-me
                 </Text>
