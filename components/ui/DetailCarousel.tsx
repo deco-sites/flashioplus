@@ -22,13 +22,12 @@ export interface Props {
 
 function DetailItem({ image }: Item) {
   return (
-    <div class="relative min-w-[100%] overflow-y-hidden">
+    <div class="relative min-w-[454px] overflow-y-hidden">
       <Image
         width={424}
         height={415}
         src={image}
         alt="Detalhe visual do produto"
-        class="!max-w-none"
         loading="eager"
       />
     </div>
@@ -108,7 +107,7 @@ function ImagesMiniature({ images }: Props) {
 function Controls() {
   return (
     <>
-      <div class="flex items-center justify-center justify-self-start z-10 col-start-1 row-start-2">
+      <div class="flex items-center  justify-center justify-self-start z-10 col-start-1 row-start-2">
         <Button
           class="h-12 w-12 "
           variant="icon"
@@ -149,7 +148,7 @@ function DetailCarousel({ images }: Props) {
     <>
       <div
         id={id}
-        class="relative grid grid-cols-[48px_1fr_48px_40px] items-start sm:grid-cols-[120px_1fr_120px_120px] grid-rows-[200px_auto_auto]"
+        class="relative grid grid-cols-[48px_1fr_48px_40px] items-start sm:grid-cols-[120px_1fr_1fr_120px] grid-rows-[200px_auto_auto]"
       >
         <Slider class="col-start-1 col-end-4 row-span-full scrollbar-none gap-6">
           {images?.map((image, index) => <DetailItem image={image} />)}

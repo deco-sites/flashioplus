@@ -68,9 +68,9 @@ function Details({ page }: { page: ProductDetailsPage }) {
     <Container class="py-10">
       <div class="flex flex-col gap-4 ">
         {/* Image Gallery */}
-        <div class="flex flex-col overflow-auto snap-x snap-mandatory p-8 scroll-smooth sm:gap-8">
+        <div class="flex flex-col overflow-auto snap-x snap-mandatory p-8 scroll-smooth sm:gap-8 lg:px-0">
           <div class="flex flex-col items-center lg:flex-row lg:gap-2 lg:items-start">
-            <div class="max-w-full  sm:max-w-[540px] ">
+            <div class="max-w-full  sm:max-w-[540px]">
               {images != undefined
                 ? images?.length > 1
                   ? <DetailCarousel images={[front.url!, back.url!]} />
